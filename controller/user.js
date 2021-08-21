@@ -1,5 +1,6 @@
 const { User } = require('../db');
-
+const jwt = require('../utils/jwt');
+const { jwtSecretKey } = require('../config');
 // 查询所有用户数据
 exports.queryAllUserInfo = (req,res,next) => {
 	try{
@@ -42,6 +43,38 @@ exports.registerHandler = async (req,res,next)=>{
 
 		res.status(201).json(temp);
 
+	}catch(err){
+		next(err);
+	}
+}
+
+exports.loginHandler = async (req,res,next) => {
+	// console.log('123')
+	try{
+		let user = req.user.toJSON();
+		let token = await jwt.sign({
+			userId:user._id
+		},jwtSecretKey,{
+			expiresIn:60
+		});
+
+		delete user.password;
+		res.status(200).json({
+			...user,
+			token
+		});
+	}catch(err){
+		next(err);
+	}
+}
+
+
+
+exports.getCurrentUser = async (req,res,next) => {
+	try{
+		let user = req.user;
+		// res.send('getCurrentUser');
+		res.json(user);
 	}catch(err){
 		next(err);
 	}

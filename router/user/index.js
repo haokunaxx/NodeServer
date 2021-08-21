@@ -2,17 +2,30 @@ const express = require('express');
 
 const { registerHandler, 
 		queryAllUserInfo, 
-		queryUserInfoByUsername } = require('../../controller/user');
+		queryUserInfoByUsername,
+		loginHandler,
+		getCurrentUser } = require('../../controller/user');
 
-const { registerValidator } = require('../../validator/user');
+const { registerValidator,
+		loginValidator } = require('../../validator/user');
+
+const auth = require('../../middleware/auth');
+
 
 const router = express.Router();
 
+
+
+
+router.post('/register', registerValidator ,registerHandler);
+
+router.post('/login',loginValidator, loginHandler )
+
 router.get('/all', queryAllUserInfo);
 
-router.get('/:username', queryUserInfoByUsername);
+router.get('/info', auth, getCurrentUser);
 
-router.post('/register', registerValidator ,registerHandler)
+router.get('/:username', queryUserInfoByUsername);
 
 module.exports = router;
 // exports.userRouter = router;

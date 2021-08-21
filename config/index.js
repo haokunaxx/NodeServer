@@ -7,4 +7,5 @@
 module.exports = {
 	dbPath:'mongodb://localhost/test',
 	md5SecretKey:'xuxin',
+	jwtSecretKey:'98afc774-9088-4a60-87ad-2ae19176e6e5'
 }

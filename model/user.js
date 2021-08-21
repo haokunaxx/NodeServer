@@ -14,6 +14,7 @@ let userSchema = new Schema({
 	password:{
 		type:String,
 		require:true,
+		select:false,
 		set:val => md5(val)
 	},
 	bio:{
