@@ -15,7 +15,7 @@ exports.MongooseConnect = (callback) => {
         useUnifiedTopology: true
     })
     .then(client=>{
-        console.log('连接数据库成功!',client);
+        // console.log('连接数据库成功!',client);
         callback();           //提供数据库访问的对象
     })
     .catch(err=>{

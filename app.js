@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 // app.use(express.urlencoded());
 
-app.use(morgan('dev')); //控制信息
+app.use(morgan('dev')); //控制台信息
 
 app.use(cors());    //跨域
 

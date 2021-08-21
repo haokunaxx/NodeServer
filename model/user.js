@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const md5 = require('../utils/md5');
 const Schema = mongoose.Schema;
 
 let userSchema = new Schema({
@@ -12,7 +13,8 @@ let userSchema = new Schema({
 	},
 	password:{
 		type:String,
-		require:true
+		require:true,
+		set:val => md5(val)
 	},
 	bio:{
 		type:String,

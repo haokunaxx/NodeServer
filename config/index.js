@@ -5,5 +5,6 @@
 // 测试数据库
 // mongoose.connect('mongodb://localhost/test')
 module.exports = {
-	dbPath:'mongodb://localhost/test'
+	dbPath:'mongodb://localhost/test',
+	md5SecretKey:'xuxin',
 }
