@@ -27,6 +27,7 @@ app.get('/',(req,res)=>{
 // 错误捕获
 app.use((err,req,res,next)=>{
     if(err){
+        console.log(err);
         res.send('出错了');
     }
 })

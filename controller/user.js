@@ -55,7 +55,8 @@ exports.loginHandler = async (req,res,next) => {
 		let token = await jwt.sign({
 			userId:user._id
 		},jwtSecretKey,{
-			expiresIn:60
+			// expiresIn:60
+			expiresIn: '1h'
 		});
 
 		delete user.password;

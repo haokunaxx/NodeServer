@@ -1,19 +1,21 @@
 const mongoose = require('mongoose');
 const md5 = require('../utils/md5');
+const commonAttr = require('./common.js');
 const Schema = mongoose.Schema;
 
 let userSchema = new Schema({
+	...commonAttr,
 	email:{
 		type:String,
-		require:true
+		required:true
 	},
 	username:{
 		type:String,
-		require:true
+		required:true
 	},
 	password:{
 		type:String,
-		require:true,
+		required:true,
 		select:false,
 		set:val => md5(val)
 	},
@@ -24,14 +26,6 @@ let userSchema = new Schema({
 	image:{
 		type:String,
 		default:null
-	},
-	createTime:{
-		type:String,
-		default:Date.now()
-	},
-	updateTime:{
-		type:String,
-		default:Date.now()
 	}
 })
 

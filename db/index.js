@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { dbPath } = require('../config');
 
 const userSchema = require('../model/user');
+const articleSchema = require('../model/article');
 
 exports.MongooseConnect = (callback) => {
 	// 云数据库
@@ -23,4 +24,5 @@ exports.MongooseConnect = (callback) => {
     })
 }
 
-exports.User = mongoose.model('User', userSchema);;
+exports.User = mongoose.model('User', userSchema);
+exports.Article = mongoose.model('Article',articleSchema);
